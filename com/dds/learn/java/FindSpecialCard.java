@@ -1,64 +1,52 @@
 package com.dds.learn.java;
 
-
-/*
-#plan
-1. Understand the problem and identify the input/output.
-2. Use an efficient approach to solve it within the required constraints.
-3. Add clear inline comments for readability.
-4. Test with normal cases, edge cases, and minimum/maximum constraints.
-5. Return the final result in the expected format.
-*/
-
 import java.util.*;
 
 public class FindSpecialCard {
 
     public static int solution(int[] cards) {
-        // Frequency array based on given constraint: 1 <= cards[i] <= 100
+        // Frequency table for card values in the allowed range [1, 100].
         int[] freq = new int[101];
-        int sum = 0; // Initialize sum to 0 to handle the case where no special cards are found
-        // Validate that all cards are within the constraint: 1 <= cards[i] <= 100
+        int sum = 0; // Remains 0 when there are no unique cards.
+        // Reject invalid card values before counting.
     for (int card : cards) {
         if (card < 1 || card > 100) {
             throw new IllegalArgumentException("Card value " + card + " is out of bounds. Must be between 1 and 100.");
         }
     }
 try {
-    
-
-        // Count how many times each card appears
+            // Count occurrences of each card.
         for (int card : cards) {
             freq[card]++;
         }
 
         
 
-        // Add only cards that appear exactly once
+            // Sum only the cards that appear exactly once.
         for (int card : cards) {
             if (freq[card] == 1) {
                 sum += card;
             }
         }
         } catch (Exception e) {
-    // TODO: handle exception
+        // Fall back to -1 when an unexpected runtime error occurs.
     System.out.println("An error occurred: " + e.getMessage());
-    sum =-1; // Set sum to -1 in case of any exception, as we cannot determine the special cards
+        sum =-1;
 }
 
         return sum;
     }
 
     public static void main(String[] args) {
-        // Custom test cases
+        // Quick checks for common scenarios.
         System.out.println(solution(new int[]{2, 3, 1, 3})==3?"Pass":"Fail"); // Expected: 3
         System.out.println(solution(new int[]{1, 2, 2, 3, 4, 4})==4?"Pass":"Fail"); // Expected: 4
         System.out.println(solution(new int[]{5})==5?"Pass":"Fail"); // Expected: 5
         System.out.println(solution(new int[]{7, 7, 7})==0?"Pass":"Fail"); // Expected: 0
         System.out.println(solution(new int[]{1, 2, 3, 4})==10?"Pass":"Fail"); // Expected: 10
-        System.out.println(solution(new int[]{-1, -1, 1, 1}) !=-1?"Pass":"Fail"); // Expected: Fail or RTE due to negative values, but we will ignore this case as per constraints.
+        System.out.println(solution(new int[]{-1, -1, 1, 1}) !=-1?"Pass":"Fail"); // Expected: Fail due to invalid values.
 
-        // Scanner for user input
+        // Interactive input.
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter number of cards: ");
         int n = scanner.nextInt();
