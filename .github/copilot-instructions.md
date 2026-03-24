@@ -37,8 +37,8 @@ feat(auth): add JWT authentication middleware
 After every requirement completion (whether implemented from prompt-based guidance or manual code change), run project checks automatically before marking the task done.
 
 ### Minimum Checks
-- `npm run lint`
-- `npm run typecheck`
+- `javac com/dds/learn/java/*.java`
+- `java -cp . com.dds.learn.java.MissingNumbers`
 
 ### Feature/Area Checks
 - If API code is changed:
