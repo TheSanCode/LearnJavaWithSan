@@ -41,11 +41,13 @@ After every requirement completion (whether implemented from prompt-based guidan
 - `java -cp . com.dds.learn.java.MissingNumbers`
 
 ### Feature/Area Checks
-- If API code is changed:
-	- `npm run test:integration -w apps/api`
-	- `npm run build:api`
-- If web code is changed:
-	- `npm run build:web`
+- If Java source code under `com/dds/learn/java/` is changed:
+	- `javac com/dds/learn/java/*.java`
+- If a runnable class is changed (class has `public static void main`):
+	- `java -cp . com.dds.learn.java.<ClassName>`
+- If Java test files are changed (for example `*Test.java`):
+	- `javac com/dds/learn/java/*Test.java`
+	- `java -cp . com.dds.learn.java.<TestClassName>`
 
 ### Reporting Rule
 - Always report check results in the completion update.
